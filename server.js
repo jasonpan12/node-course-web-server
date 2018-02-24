@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000; // use process.env (heroku is env in this case) PORT, env variable on heroku. if no exist, use 3000 for local
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -54,6 +55,6 @@ app.get('/bad', (req, res) => {
 });
 //create a route at /bad
 // send back json with errorMessage property
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
